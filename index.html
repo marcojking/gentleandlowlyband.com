@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Swap no-js → js before paint so animated elements hide only when JS can reveal them. -->
+  <script>document.documentElement.classList.replace('no-js','js');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gentle &amp; Lowly — Your son before me</title>
+  <meta name="description" content="Gentle &amp; Lowly — the new single 'peace like a river' is out now. The full EP, 'Your son before me', arrives July 3. Pre-save it now." />
+  <meta name="theme-color" content="#1a1714" />
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="music.album" />
+  <meta property="og:title" content="Gentle &amp; Lowly — Your son before me" />
+  <meta property="og:description" content="'peace like a river' is out now. The EP arrives July 3. Pre-save it." />
+  <meta property="og:image" content="img/your-son-before-me.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="img/notehead-ripples-white.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="img/peace-like-a-river.jpg" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ════════════════════════════ NAV ════════════════════════════ -->
+  <nav class="nav" aria-label="Primary">
+    <a class="wordmark" href="/" aria-label="Gentle and Lowly — home">
+      GENTLE <span class="amp">&amp;</span> LOWLY
+    </a>
+    <a class="nav__link" href="/presave" target="_blank" rel="noopener">Pre-save</a>
+  </nav>
+
+  <!-- ════════════════════════════ HERO (billboard) ════════════════ -->
+  <header class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__veil" aria-hidden="true"></div>
+
+    <div class="wrap hero__inner">
+      <p class="eyebrow hero__eyebrow reveal" data-d="1">New single &middot; Out now</p>
+
+      <h1 class="hero__title reveal" data-d="2">peace<br />like a river</h1>
+
+      <p class="hero__credit reveal" data-d="2">feat. Marco King <span class="amp">&amp;</span> Colin Wycherley</p>
+
+      <p class="hero__sub reveal" data-d="3">
+        The first song from the forthcoming EP,
+        <em>Your son before me</em>. A waterfall release &mdash;
+        one track at a time, until the whole record arrives.
+      </p>
+
+      <!-- Dual CTA -->
+      <div class="hero__cta reveal" data-d="4">
+        <!-- PRIMARY: Listen to the live single. href is the real smartlink
+             (no-JS safe); data-listen-link keeps it in sync with LISTEN_URL. -->
+        <a class="btn btn--primary"
+           href="https://distrokid.com/hyperfollow/gentleandlowly/peace-like-a-river-feat-marco-king--colin-wycherley?ref=release"
+           data-listen-link
+           target="_blank" rel="noopener">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor" stroke="none"/></svg>
+          Listen to &ldquo;peace like a river&rdquo;
+        </a>
+
+        <!-- SECONDARY: Pre-save the EP (vanity URL → DistroKid HyperFollow) -->
+        <a class="btn btn--ghost"
+           href="/presave"
+           target="_blank" rel="noopener">
+          Pre-save &ldquo;Your son before me&rdquo;
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <p class="hero__meta reveal" data-d="5">
+        Single out May 15 <span class="dot">&bull;</span> Full EP July 3, 2026
+      </p>
+    </div>
+  </header>
+
+  <!-- ════════════════════════════ EP HUB (waterfall) ══════════════ -->
+  <section class="ep" id="ep" aria-labelledby="ep-title">
+    <div class="wrap">
+      <div class="ep__head inview">
+        <p class="eyebrow">The EP &middot; A waterfall release</p>
+        <h2 class="ep__title" id="ep-title">Your son before me</h2>
+        <p class="ep__intro">
+          Three songs, released into the open one at a time. The first is
+          here; the rest follow on July 3. Pre-save now and every track lands
+          in your library the moment it drops.
+        </p>
+      </div>
+
+      <div class="ep__grid">
+        <!-- Cover art -->
+        <figure class="cover inview" style="margin:0;">
+          <img src="img/your-son-before-me.jpg"
+               width="927" height="927"
+               alt="Your son before me — EP cover. Sunlit water in soft ripples." />
+          <figcaption class="cover__tag"><span class="dot"></span> EP &middot; July 3</figcaption>
+        </figure>
+
+        <!-- Tracklist + actions -->
+        <div class="inview">
+          <!--
+            ═══ WATERFALL UPDATE POINTS ═══════════════════════════════
+            As each track is released, change its <li> from .track--locked
+            to .track--live, give it a real href, and swap the lock icon
+            for the .track__play circle. Update the .ep__progress width
+            (in css/styles.css → .ep__progress .bar > span) and the
+            "1 of 3" / countdown copy below.
+            ───────────────────────────────────────────────────────────
+          -->
+          <ol class="tracklist">
+
+            <!-- TRACK 1 — LOCKED / UPCOMING -->
+            <li class="track track--locked">
+              <span class="track__num">1</span>
+              <div class="track__body">
+                <span class="track__title">how could i</span>
+                <span class="track__meta">feat. Sophia Caputo &middot; Coming July 3</span>
+              </div>
+              <span class="track__state track__lock" aria-label="Locked — releases July 3">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+              </span>
+            </li>
+
+            <!-- TRACK 2 — RELEASED / LIVE (the first single) -->
+            <li class="track track--live"
+                onclick="window.openListen && window.openListen(event)">
+              <span class="track__num">2</span>
+              <a class="track__body"
+                 href="https://distrokid.com/hyperfollow/gentleandlowly/peace-like-a-river-feat-marco-king--colin-wycherley?ref=release"
+                 data-listen-link target="_blank" rel="noopener"
+                 style="text-decoration:none;">
+                <span class="track__title">peace like a river</span>
+                <span class="track__meta">feat. Colin Wycherley &middot; Out now</span>
+              </a>
+              <span class="track__state">
+                <span class="track__play" aria-label="Play peace like a river">
+                  <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor"/></svg>
+                </span>
+              </span>
+            </li>
+
+            <!-- TRACK 3 — LOCKED / UPCOMING -->
+            <li class="track track--locked">
+              <span class="track__num">3</span>
+              <div class="track__body">
+                <span class="track__title">look to the flowers</span>
+                <span class="track__meta">feat. Janae Haas &middot; Coming July 3</span>
+              </div>
+              <span class="track__state track__lock" aria-label="Locked — releases July 3">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+              </span>
+            </li>
+          </ol>
+
+          <!-- Waterfall progress -->
+          <div class="ep__progress" aria-hidden="true">
+            <span>1 of 3 released</span>
+            <span class="bar"><span></span></span>
+            <span class="countdown" data-countdown>July 3</span>
+          </div>
+
+          <!-- Pre-save EP CTA → DistroKid HyperFollow -->
+          <div class="ep__cta">
+            <a class="btn btn--ghost"
+               href="https://distrokid.com/hyperfollow/gentleandlowly/your-son-before-me?ref=release"
+               target="_blank" rel="noopener">
+              Pre-save the EP
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <p class="ep__note">Save it once &mdash; every song unlocks automatically as it drops.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ THE BAND ════════════════════════ -->
+  <section class="band" id="band" aria-labelledby="band-title">
+    <div class="wrap">
+      <div class="band__grid">
+        <figure class="band__portrait inview" style="margin:0;">
+          <img src="img/guitar.jpg"
+               width="540" height="960"
+               alt="A Gentle & Lowly member playing acoustic guitar in warm lamplight." />
+        </figure>
+        <div class="inview">
+          <p class="eyebrow">The band</p>
+          <h2 class="band__title" id="band-title">Quiet songs, played live.</h2>
+          <p class="band__bio">
+            Gentle <span class="amp">&amp;</span> Lowly is the recorded-music side of the
+            Worship Music <span class="amp">&amp;</span> Arts Club at Penn State &mdash;
+            student-written songs, tracked live with the room left in. Honest words,
+            unhurried arrangements, nothing louder than it needs to be.
+          </p>
+        </div>
+      </div>
+
+      <figure class="band__wide inview" style="margin:0;">
+        <img src="img/band-photo.jpg"
+             width="1200" height="800"
+             alt="The Gentle & Lowly ensemble gathered in a warm-lit room with their instruments." />
+        <figcaption class="band__cap">Side A &middot; recorded live</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ FOOTER ══════════════════════════ -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__mark inview">GENTLE <span class="amp">&amp;</span> LOWLY</div>
+
+      <blockquote class="foot__verse inview">
+        &ldquo;I will extend peace to her like a river.&rdquo;
+        <cite>Isaiah 66:12</cite>
+      </blockquote>
+
+      <nav class="foot__links" aria-label="Footer">
+        <a href="/presave" target="_blank" rel="noopener">Pre-save</a>
+        <a href="https://wmaac.org" target="_blank" rel="noopener">WM&amp;A</a>
+        <a href="mailto:hello@wmaac.org">Contact</a>
+      </nav>
+
+      <p class="foot__fine">
+        &copy; 2026 Gentle &amp; Lowly &middot; A Worship Music &amp; Arts project at Penn State
+      </p>
+    </div>
+  </footer>
+
+  <!-- ──────────────────────────────────────────────────────────────
+       Progressive enhancement only. The page is fully functional
+       without JS: reveals fall back to visible, the EP CTA is a plain
+       link. JS adds the staggered entrance, scroll-in, and countdown.
+       ────────────────────────────────────────────────────────────── -->
+  <script>
+    (function () {
+      var doc = document.documentElement;
+
+      // 1 ▸ Listen link — single source of truth for "peace like a river".
+      //     Set this to the streaming smartlink once you have it.
+      var LISTEN_URL = "https://distrokid.com/hyperfollow/gentleandlowly/peace-like-a-river-feat-marco-king--colin-wycherley?ref=release";
+      document.querySelectorAll('[data-listen-link]').forEach(function (a) {
+        a.setAttribute('href', LISTEN_URL);
+      });
+      window.openListen = function (e) {
+        if (e.target.closest('a')) return; // let real links handle themselves
+        window.open(LISTEN_URL, '_blank', 'noopener');
+      };
+
+      // 2 ▸ Orchestrated page-load reveal
+      requestAnimationFrame(function () { doc.classList.add('is-ready'); document.body.classList.add('is-ready'); });
+
+      // 3 ▸ Scroll-in for lower sections
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { en.target.classList.add('seen'); io.unobserve(en.target); }
+          });
+        }, { threshold: 0.18 });
+        document.querySelectorAll('.inview').forEach(function (el) { io.observe(el); });
+      } else {
+        document.querySelectorAll('.inview').forEach(function (el) { el.classList.add('seen'); });
+      }
+
+      // 4 ▸ Sticky-nav hairline on scroll
+      var nav = document.querySelector('.nav');
+      var onScroll = function () { nav.dataset.scrolled = (window.scrollY > 24) ? 'true' : 'false'; };
+      onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+
+      // 5 ▸ Countdown to the EP drop (quiet, optional)
+      var DROP = new Date('2026-07-03T00:00:00');
+      var cd = document.querySelector('[data-countdown]');
+      if (cd) {
+        var days = Math.ceil((DROP - new Date()) / 86400000);
+        if (days > 1) cd.textContent = days + ' days';
+        else if (days === 1) cd.textContent = 'Tomorrow';
+        else cd.textContent = 'Out now';
+      }
+    })();
+  </script>
+</body>
+</html>
