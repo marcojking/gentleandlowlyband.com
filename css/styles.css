@@ -130,46 +130,21 @@ body::after {
 .wordmark .amp { margin: 0 0.1em; }
 
 /* ============================================================
-   NAV — minimal sticky bar
-   ============================================================ */
-.nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 20;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1.1rem var(--gut);
-  background: rgba(26, 23, 20, 0.72);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
-}
-.nav[data-scrolled="true"] { border-bottom-color: var(--border); }
-.nav__link {
-  font-size: var(--fs-eyebrow);
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--cream-2);
-  transition: color var(--dur) var(--ease);
-}
-.nav__link:hover { color: var(--amber); }
-
-/* ============================================================
    HERO — the billboard
    ============================================================ */
 .hero {
   position: relative;
   min-height: 100svh;
-  display: flex; align-items: center;
-  padding: 8rem 0 5rem;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 5rem 0;
   overflow: hidden;
 }
-/* atmospheric water image — low opacity, heavy espresso vignette so
-   the type stays high-contrast and distraction-free */
+/* atmospheric band photo — veiled so the wordmark + covers stay legible */
 .hero__bg {
   position: absolute; inset: 0;
-  background: url('../img/peace-like-a-river.jpg') center 38% / cover no-repeat;
-  opacity: 0.5;
+  background: url('../img/band-photo.jpg') center 30% / cover no-repeat;
+  opacity: 0.55;
   transform: scale(1.06);
   animation: drift 26s var(--ease) infinite alternate;
   z-index: 0;
@@ -177,13 +152,12 @@ body::after {
 .hero__veil {
   position: absolute; inset: 0; z-index: 1;
   background:
-    radial-gradient(120% 90% at 30% 40%, transparent 0%, rgba(26,23,20,0.55) 60%, rgba(26,23,20,0.92) 100%),
+    radial-gradient(120% 90% at 50% 42%, transparent 0%, rgba(26,23,20,0.5) 58%, rgba(26,23,20,0.9) 100%),
     linear-gradient(180deg, rgba(26,23,20,0.55) 0%, rgba(26,23,20,0.35) 45%, var(--espresso) 100%);
 }
-.hero__inner { position: relative; z-index: 2; max-width: 760px; }
+.hero__inner { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; }
 
-.hero__eyebrow { margin: 0 0 1.6rem; }
-.hero__title {
+.hero__wordmark {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 500;
@@ -194,265 +168,145 @@ body::after {
   color: var(--cream);
   text-shadow: 0 2px 40px rgba(0,0,0,0.45);
 }
-.hero__sub {
-  margin: 1.6rem 0 0;
-  max-width: 42ch;
-  font-weight: 300;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--cream-2);
-}
-.hero__sub em { font-family: var(--font-display); font-style: italic; color: var(--cream); font-size: 1.1em; }
-.hero__credit {
-  margin: 0.9rem 0 0;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(1.05rem, 2.4vw, 1.45rem);
-  color: var(--cream-2);
-  letter-spacing: 0.01em;
-}
-.hero__credit .amp { font-style: normal; }
+.hero__wordmark .amp { font-style: normal; font-weight: 600; margin: 0 0.04em; }
 
-.hero__cta {
-  display: flex; flex-wrap: wrap; gap: 0.9rem;
-  margin-top: 2.6rem;
+/* Two album covers as the primary CTA */
+.releases {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: clamp(1.5rem, 4vw, 2.75rem);
+  margin-top: clamp(2.5rem, 6vw, 4rem);
 }
-.hero__meta {
-  margin-top: 2.2rem;
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--cream-3);
+.release {
+  display: flex; flex-direction: column; gap: 1rem;
+  width: clamp(220px, 34vw, 300px);
 }
-.hero__meta .dot { color: var(--amber); margin: 0 0.6em; }
-
-/* ---------- Buttons ---------- */
-.btn {
-  --pad-y: 1rem; --pad-x: 1.9rem;
-  display: inline-flex; align-items: center; gap: 0.7em;
-  padding: var(--pad-y) var(--pad-x);
-  border-radius: 9999px;
-  font-family: var(--font-body);
-  font-size: var(--fs-sm);
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  border: 1px solid transparent;
-  transition: transform var(--dur) var(--ease),
-              background var(--dur) var(--ease),
-              color var(--dur) var(--ease),
-              border-color var(--dur) var(--ease),
-              box-shadow var(--dur) var(--ease);
-  will-change: transform;
-}
-.btn:hover { transform: translateY(-2px); }
-.btn:focus-visible { outline: none; box-shadow: 0 0 0 3px rgba(196,121,58,0.5); }
-.btn .ico { width: 1.05em; height: 1.05em; flex-shrink: 0; }
-
-/* primary — cream solid, max contrast (Listen now) */
-.btn--primary {
-  background: var(--cream);
-  color: var(--espresso);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
-}
-.btn--primary:hover { background: var(--amber-bright); color: var(--espresso); }
-
-/* secondary — amber ghost (Pre-save) */
-.btn--ghost {
-  background: rgba(196,121,58,0.08);
-  color: var(--amber-bright);
-  border-color: rgba(196,121,58,0.45);
-}
-.btn--ghost:hover {
-  background: var(--amber);
-  border-color: var(--amber);
-  color: var(--espresso);
-}
-
-/* ============================================================
-   EP HUB — the waterfall section
-   ============================================================ */
-.ep {
-  position: relative;
-  padding: clamp(4rem, 10vw, 8rem) 0;
-  background: var(--espresso-2);
-  border-top: 1px solid var(--border);
-}
-.ep__head { max-width: 640px; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
-.ep__title {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 500;
-  font-size: var(--fs-display);
-  line-height: 1.02;
-  letter-spacing: -0.01em;
-  margin: 1rem 0 0;
-}
-.ep__intro { margin: 1.1rem 0 0; max-width: 50ch; color: var(--cream-2); font-weight: 300; }
-
-.ep__grid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: clamp(2rem, 6vw, 4.5rem);
-  align-items: start;
-}
-
-/* cover art — minimalist square frame */
-.cover {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: 0 18px 48px rgba(0,0,0,0.55);
+.release__cover {
+  position: relative; display: block;
   aspect-ratio: 1 / 1;
-  background: var(--card);
-}
-.cover img { width: 100%; height: 100%; object-fit: cover; }
-.cover__tag {
-  position: absolute; left: 0.85rem; bottom: 0.85rem;
-  display: inline-flex; align-items: center; gap: 0.5em;
-  padding: 0.45rem 0.8rem;
-  border-radius: 9999px;
-  background: rgba(26,23,20,0.72);
-  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--cream-2);
-  border: 1px solid var(--border-soft);
-}
-.cover__tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
-
-/* ---------- Tracklist ---------- */
-.tracklist { list-style: none; margin: 0; padding: 0; }
-.track {
-  display: flex; align-items: center; gap: 1.1rem;
-  padding: 1.1rem 0.25rem;
-  border-bottom: 1px solid var(--border-soft);
-  transition: padding-left var(--dur) var(--ease);
-}
-.track:first-child { border-top: 1px solid var(--border-soft); }
-.track__num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: var(--cream-3);
-  width: 1.6rem; flex-shrink: 0; text-align: center;
-}
-.track__body { flex: 1; min-width: 0; }
-.track__title {
-  font-size: 1.15rem;
-  font-weight: 400;
-  letter-spacing: -0.005em;
-  color: var(--cream);
-}
-.track__meta {
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--cream-3);
-  margin-top: 0.25rem;
-}
-.track__state { flex-shrink: 0; display: inline-flex; align-items: center; }
-
-/* active / released track is a link */
-.track--live { cursor: pointer; }
-.track--live:hover { padding-left: 0.9rem; }
-.track--live:hover .track__title { color: var(--amber-bright); }
-.track--live .track__num { color: var(--amber); }
-.track--live .track__play {
-  width: 2.5rem; height: 2.5rem; border-radius: 50%;
-  display: grid; place-items: center;
-  border: 1px solid rgba(196,121,58,0.5);
-  color: var(--amber-bright);
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease), border-color var(--dur) var(--ease);
-}
-.track--live:hover .track__play { background: var(--amber); color: var(--espresso); border-color: var(--amber); }
-.track--live .track__play .ico { width: 0.95rem; height: 0.95rem; }
-
-/* locked / upcoming tracks */
-.track--locked { color: var(--cream-4); }
-.track--locked .track__num,
-.track--locked .track__title { color: var(--cream-4); }
-.track--locked .track__lock { color: var(--cream-4); }
-.track--locked .track__lock .ico { width: 1.05rem; height: 1.05rem; }
-
-/* waterfall progress + EP CTA */
-.ep__progress {
-  display: flex; align-items: center; gap: 1rem;
-  margin: 1.8rem 0.25rem 2rem;
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--cream-3);
-}
-.ep__progress .bar {
-  flex: 1; height: 2px; border-radius: 2px;
-  background: var(--border);
-  position: relative; overflow: hidden;
-}
-.ep__progress .bar > span {
-  position: absolute; inset: 0 auto 0 0;
-  width: 33.3%;
-  background: var(--amber);
-}
-.ep__progress .countdown { color: var(--amber); }
-
-.ep__cta { margin-top: 0.5rem; }
-.ep__cta .btn { width: 100%; justify-content: center; }
-.ep__note {
-  margin-top: 0.9rem;
-  font-size: var(--fs-sm);
-  color: var(--cream-3);
-  text-align: center;
-}
-
-/* ============================================================
-   THE BAND
-   ============================================================ */
-.band {
-  padding: clamp(4rem, 10vw, 8rem) 0;
-  border-top: 1px solid var(--border);
-}
-.band__grid {
-  display: grid;
-  grid-template-columns: 0.8fr 1fr;
-  gap: clamp(2rem, 6vw, 4.5rem);
-  align-items: center;
-}
-.band__portrait {
   border-radius: 12px; overflow: hidden;
   border: 1px solid var(--border);
-  box-shadow: 0 18px 48px rgba(0,0,0,0.5);
-  aspect-ratio: 3 / 4; background: var(--card);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.55);
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
 }
-.band__portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; filter: brightness(0.95); }
-.band__title {
+.release__cover img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: brightness(0.92);
+  transition: transform var(--dur-slow) var(--ease-out), filter var(--dur) var(--ease);
+}
+.release:hover .release__cover { transform: translateY(-4px); box-shadow: 0 26px 60px rgba(0,0,0,0.6); }
+.release:hover .release__cover img { transform: scale(1.04); filter: brightness(1); }
+.release:focus-visible { outline: none; }
+.release:focus-visible .release__cover { box-shadow: 0 0 0 3px rgba(196,121,58,0.6); }
+
+/* badge — play / plus, sits on the cover */
+.release__badge {
+  position: absolute; right: 0.8rem; bottom: 0.8rem;
+  width: 2.9rem; height: 2.9rem; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(26,23,20,0.6);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(245,234,214,0.4);
+  color: var(--cream);
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease), transform var(--dur) var(--ease-spring);
+}
+.release__badge .ico { width: 1.1rem; height: 1.1rem; margin-left: 0.12rem; }
+.release__badge--plus .ico { margin-left: 0; }
+.release:hover .release__badge { background: var(--amber); color: var(--espresso); border-color: var(--amber); transform: scale(1.08); }
+
+.release__label { display: flex; flex-direction: column; gap: 0.2rem; text-align: center; }
+.release__action {
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow); font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--amber-bright);
+}
+.release__title {
+  font-family: var(--font-display);
+  font-style: italic; font-weight: 500;
+  font-size: 1.35rem; line-height: 1.1;
+  color: var(--cream);
+  transition: color var(--dur) var(--ease);
+}
+.release:hover .release__title { color: var(--amber-bright); }
+
+/* ============================================================
+   COUNTDOWN
+   ============================================================ */
+.cd {
+  min-height: 78svh;
+  display: flex; flex-direction: column; justify-content: center;
+  text-align: center;
+  padding: clamp(4rem, 9vw, 7rem) 0;
+  border-top: 1px solid var(--border);
+  background:
+    radial-gradient(90% 70% at 50% 40%, rgba(196,121,58,0.07), transparent 70%),
+    var(--espresso-2);
+}
+.cd__eyebrow { margin: 0; }
+.cd__title {
   font-family: var(--font-display);
   font-style: italic; font-weight: 500;
   font-size: var(--fs-display);
-  line-height: 1.04; letter-spacing: -0.01em;
-  margin: 1rem 0 0;
+  line-height: 1.02; letter-spacing: -0.01em;
+  margin: 1rem 0 clamp(2.5rem, 6vw, 4rem);
 }
-.band__bio { margin: 1.2rem 0 0; max-width: 46ch; color: var(--cream-2); font-weight: 300; }
-.band__wide {
-  position: relative;
-  margin-top: clamp(2rem, 5vw, 3.5rem);
-  border-radius: 12px; overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: 0 18px 48px rgba(0,0,0,0.5);
+.cd__clock {
+  display: flex; align-items: flex-start; justify-content: center;
+  gap: clamp(0.5rem, 2.5vw, 2rem);
 }
-.band__wide img { width: 100%; height: auto; display: block; filter: brightness(0.82); }
-.band__cap {
-  position: absolute; left: 1.1rem; bottom: 1rem;
-  font-family: var(--font-mono);
-  font-size: var(--fs-micro);
+.cd__unit { display: flex; flex-direction: column; align-items: center; min-width: clamp(3.5rem, 14vw, 9rem); }
+.cd__num {
+  font-family: var(--font-display);
+  font-style: italic; font-weight: 600;
+  font-size: clamp(3.2rem, 15vw, 10rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.4);
+}
+.cd__lab {
+  margin-top: 0.6rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--cream-3);
+}
+.cd__sep {
+  font-family: var(--font-display);
+  font-style: italic; font-weight: 500;
+  font-size: clamp(2.2rem, 10vw, 7rem);
+  line-height: 0.9;
+  color: var(--amber);
+  opacity: 0.55;
+  align-self: flex-start;
+  margin-top: 0.05em;
+}
+.cd__cta {
+  display: inline-flex; align-items: center; gap: 0.6em;
+  margin: clamp(2.5rem, 6vw, 4rem) auto 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow); font-weight: 600;
   letter-spacing: 0.22em; text-transform: uppercase;
-  color: rgba(245,234,214,0.72);
+  color: var(--amber-bright);
+  transition: gap var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.cd__cta .ico { width: 1.1em; height: 1.1em; }
+.cd__cta:hover { gap: 1em; color: var(--cream); }
+
+/* "Out now" state when the timer hits zero */
+.cd__live { display: none; }
+.cd.is-live .cd__clock { display: none; }
+.cd.is-live .cd__live {
+  display: block;
+  font-family: var(--font-display); font-style: italic; font-weight: 600;
+  font-size: var(--fs-hero); color: var(--cream); margin: 0.5rem 0 0;
+}
+
+@media (max-width: 560px) {
+  .cd__sep { display: none; }
+  .cd__clock { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 1rem; max-width: 320px; margin-inline: auto; }
 }
 
 /* ============================================================
@@ -540,13 +394,8 @@ body::after {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 760px) {
-  .ep__grid { grid-template-columns: 1fr; }
-  .band__grid { grid-template-columns: 1fr; }
-  .band__portrait { max-width: 340px; aspect-ratio: 4 / 5; }
-  .cover { max-width: 380px; }
-  .hero__cta { gap: 0.75rem; }
-  .hero__cta .btn { flex: 1 1 100%; justify-content: center; }
+@media (max-width: 520px) {
+  .release { width: min(78vw, 320px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
