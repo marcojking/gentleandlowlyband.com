@@ -70,6 +70,7 @@
 
   <!-- ════════════════════════════ COUNTDOWN ═══════════════════════ -->
   <section class="cd" id="countdown" aria-labelledby="cd-title">
+    <div class="cd__bg" aria-hidden="true"></div>
     <div class="wrap">
       <p class="eyebrow cd__eyebrow inview">The EP &middot; out July 3</p>
       <h2 class="cd__title inview" id="cd-title">Your son before me</h2>
@@ -170,6 +171,22 @@
         };
         tick();
         var timer = setInterval(tick, 1000);
+      }
+
+      // 5 ▸ Subtle parallax on the countdown's water texture
+      var cdBg = document.querySelector('.cd__bg');
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (cdBg && section && !reduce) {
+        var ticking = false;
+        var move = function () {
+          var top = section.getBoundingClientRect().top;
+          cdBg.style.transform = 'translate3d(0,' + (top * 0.12).toFixed(1) + 'px,0)';
+          ticking = false;
+        };
+        var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(move); } };
+        move();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
       }
     })();
   </script>

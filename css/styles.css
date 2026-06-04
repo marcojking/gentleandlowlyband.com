@@ -234,6 +234,8 @@ body::after {
    COUNTDOWN
    ============================================================ */
 .cd {
+  position: relative;
+  overflow: hidden;
   min-height: 78svh;
   display: flex; flex-direction: column; justify-content: center;
   text-align: center;
@@ -243,6 +245,22 @@ body::after {
     radial-gradient(90% 70% at 50% 40%, rgba(196,121,58,0.07), transparent 70%),
     var(--espresso-2);
 }
+/* Darkened water texture, faint behind the gray, parallaxes on scroll. */
+.cd__bg {
+  position: absolute; left: 0; right: 0; top: -14%; height: 128%;
+  z-index: 0;
+  background: url('../img/peace-like-a-river.jpg') center / cover no-repeat;
+  opacity: 0.20;
+  filter: brightness(0.42) saturate(0.85);
+  will-change: transform;
+  pointer-events: none;
+}
+/* keep the gray prominent + soften edges into the espresso */
+.cd::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, var(--espresso-2) 0%, rgba(33,29,25,0.35) 30%, rgba(33,29,25,0.35) 70%, var(--espresso-2) 100%);
+}
+.cd .wrap { position: relative; z-index: 2; }
 .cd__eyebrow { margin: 0; }
 .cd__title {
   font-family: var(--font-display);
